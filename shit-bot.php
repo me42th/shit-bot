@@ -1,3 +1,31 @@
+/*
+select 'Textos Coletados' as 'HEADER', max(idtexto) as 'INFO' from texto union select 'Autores Coletados',max(idautor) from autor  union select 'Pagina Atual' as `?`,max(pagina) as 'Info'  from texto where idautor = (select max(idautor) from texto)  union select 'Ultima Pagina',limite from autor where idautor =(select max(idautor) from texto) union select 'Autor Coletado', nome from autor where idautor = (select max(idautor) from texto) union select 'Autor Mapeado', nome from autor where idautor = (select max(idautor) from autor);
+
+show create table texto;
+
+| texto | CREATE TABLE `texto` (
+  `idtexto` int(11) NOT NULL AUTO_INCREMENT,
+  `texto` longtext,
+  `idautor` int(11) NOT NULL,
+  `pagina` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idtexto`)
+) ENGINE=InnoDB AUTO_INCREMENT=84278 DEFAULT CHARSET=latin1 |
+
+show create table autor;
+
+| autor | CREATE TABLE `autor` (
+  `idautor` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `limite` int(11) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idautor`),
+  UNIQUE KEY `url` (`url`)
+) ENGINE=InnoDB AUTO_INCREMENT=4143 DEFAULT CHARSET=latin1 |
+
+*/
+
+
 <?php
 header("Content-type: text/html; charset=utf-8");
 
